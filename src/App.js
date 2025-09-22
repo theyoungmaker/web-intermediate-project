@@ -10,7 +10,6 @@ export default function App() {
         </Toolbar>
       </AppBar>
 
-      {/* Just using a plain div for now; Box comes next */}
       <div style={{ padding: 16 }}>
         <Typography variant="h4" gutterBottom>
           Browse Movies
