@@ -1,11 +1,39 @@
+// src/App.js
 import React from "react";
 import { AppBar, Toolbar, Typography, Box } from "@mui/material";
+import MovieCard from "./components/MovieCard";
 
-// Keep the data minimal for now
 const MOVIES = [
-  { imdbId: "tt0110357", title: "The Lion King", year: 1994 },
-  { imdbId: "tt2294629", title: "Frozen", year: 2013 },
-  { imdbId: "tt4154796", title: "Avengers: Endgame", year: 2019 },
+  {
+    imdbId: "tt0110357",
+    title: "The Lion King",
+    year: 1994,
+    rating: 8.5,
+    imageUrl:
+      "https://m.media-amazon.com/images/M/MV5BMTM2ODAwNTc0NV5BMl5BanBnXkFtZTcwMjQ2NTI3Ng@@._V1_QL75_UX388_.jpg",
+    description:
+      "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+  },
+  {
+    imdbId: "tt2294629",
+    title: "Frozen",
+    year: 2013,
+    rating: 7.4,
+    imageUrl:
+      "https://m.media-amazon.com/images/M/MV5BOTE5NjYyMjMxMV5BMl5BanBnXkFtZTgwOTcwMDk4NTE@._V1_QL75_UX522_.jpg",
+    description:
+      "Fearless optimist Anna teams up with rugged mountain man Kristoff and his loyal reindeer Sven in an epic journey to find Anna's sister Elsa, whose icy powers have trapped the kingdom of Arendelle in eternal winter.",
+  },
+  {
+    imdbId: "tt4154796",
+    title: "Avengers: Endgame",
+    year: 2019,
+    rating: 8.4,
+    imageUrl:
+      "https://m.media-amazon.com/images/M/MV5BMWIyZDljYWMtZGZkNS00YWE0LTkxOWYtM2I1NzJhYmRjMDM3XkEyXkFqcGc@._V1_QL75_UX414_.jpg",
+    description:
+      "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+  },
 ];
 
 export default function App() {
@@ -17,32 +45,17 @@ export default function App() {
         </Toolbar>
       </AppBar>
 
-      <Box
-        component="main"
-        sx={{ maxWidth: 960, mx: "auto", p: 2, textAlign: "center" }}
-      >
+      <Box component="main" sx={{ maxWidth: 960, mx: "auto", p: 2 }}>
         <Typography variant="h4" gutterBottom>
           Browse Movies
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-          First we'll render a simple list using Typography, then upgrade each
-          item to a Card.
+          We'll upgrade each text item into a Material UI Card.
         </Typography>
 
-        {/* Simple text list */}
-        <Box aria-label="movie list" textAlign="left">
+        <Box aria-label="movie list" sx={{ display: "flex", gap: 2 }}>
           {MOVIES.map((m) => (
-            <Box
-              key={m.imdbId}
-              sx={{ py: 1, borderBottom: "1px solid #e5e7eb" }}
-            >
-              <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                {m.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {m.year}
-              </Typography>
-            </Box>
+            <MovieCard key={m.imdbId} movie={m} />
           ))}
         </Box>
       </Box>
