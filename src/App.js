@@ -55,9 +55,6 @@ export default function App() {
         <Typography variant="h4" gutterBottom>
           Browse Movies
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-          We'll upgrade each text item into a Material UI Card.
-        </Typography>
 
         <Box aria-label="movie list" sx={{ display: "flex", gap: 2 }}>
           {MOVIES.map((m) => (
