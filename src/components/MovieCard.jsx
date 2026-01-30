@@ -5,6 +5,7 @@ import {
   CardMedia,
   Typography,
   Box,
+  Button,
   Rating,
 } from "@mui/material";
 import ReactPlayer from "react-player";
@@ -94,18 +95,6 @@ export default function MovieCard({ movie }) {
             >
               {description}
             </Typography>
-
-            <Typography
-              variant="caption"
-              sx={{ mt: 1, display: "inline-block", cursor: "pointer" }}
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open(imdbURL, "_blank", "noreferrer");
-              }}
-              color="primary"
-            >
-              View on IMDb
-            </Typography>
           </CardContent>
         </Card>
 
@@ -125,29 +114,11 @@ export default function MovieCard({ movie }) {
           <Box sx={{ width: "100%", height: 200 }}>
             {trailerUrl ? (
               <ReactPlayer
-                url={trailerUrl}
+                src={trailerUrl}
                 width="100%"
                 height="100%"
                 controls
-                muted
-                light={imageUrl || FALLBACK_POSTER} // ✅ force a thumbnail using poster
-                playIcon={
-                  <Box
-                    sx={{
-                      width: 64,
-                      height: 64,
-                      borderRadius: "50%",
-                      bgcolor: "rgba(0,0,0,0.6)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "white",
-                      fontSize: 28,
-                    }}
-                  >
-                    ▶
-                  </Box>
-                }
+                light={imageUrl || FALLBACK_POSTER}
               />
             ) : (
               <Typography sx={{ color: "white", p: 2 }}>
@@ -166,6 +137,26 @@ export default function MovieCard({ movie }) {
             <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.8)" }}>
               Click the thumbnail to play.
             </Typography>
+            <Box
+              sx={{
+                mt: 5,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                variant="contained"
+                sx={{ alignContent: "center" }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(imdbURL, "_blank", "noreferrer");
+                }}
+                color="primary"
+              >
+                View on IMDb
+              </Button>
+            </Box>
           </CardContent>
         </Card>
       </Box>
